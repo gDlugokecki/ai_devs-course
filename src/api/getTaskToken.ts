@@ -3,8 +3,6 @@ import { TokenData } from "../types/token.type";
 const getTaskToken = async (taskName: string) => {
   const url = `${process.env.API_URL}/token/${taskName}`;
 
-  console.log(url);
-
   const response = await fetch(url, {
     method: "POST",
     headers: {

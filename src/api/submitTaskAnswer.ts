@@ -11,7 +11,7 @@ const submitTaskAnswer = async (token: string, answer: string) => {
   });
 
   if (!response.ok) {
-    console.log(response, "Submit task error");
+    console.log(response, "submitTask error");
     process.exit(1);
   }
 
