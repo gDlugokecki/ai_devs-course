@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
-import { getTaskInput, getTaskToken, submitTaskAnswer } from "./api";
-import { promptUserForInput } from "./utils";
+import { getTaskInput, getTaskToken, submitTaskAnswer } from "../api";
+import { promptUserForInput } from "../utils";
+import OpenAi from "openai";
 
 dotenv.config();
 

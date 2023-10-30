@@ -1,6 +1,6 @@
 import { Answer } from "../types/answer.type";
 
-const submitTaskAnswer = async (token: string, answer: string) => {
+const submitTaskAnswer = async <T>(token: string, answer: T) => {
   const url = `${process.env.API_URL}/answer/${token}`;
   const response = await fetch(url, {
     method: "POST",

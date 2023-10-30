@@ -1,4 +1,11 @@
-const getTaskToken = async (token: string) => {
+type Response<T extends string, K> = {
+  code: 0 | 1;
+  msg: string;
+} & {
+  [key in T]: K;
+};
+
+const getTaskToken = async <T extends string, K>(token: string) => {
   const url = `${process.env.API_URL}/task/${token}`;
 
   const response = await fetch(url, {
@@ -13,7 +20,7 @@ const getTaskToken = async (token: string) => {
     process.exit(1);
   }
 
-  return await response.json();
+  return (await response.json()) as Response<T, K>;
 };
 
 export default getTaskToken;
