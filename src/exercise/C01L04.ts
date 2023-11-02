@@ -12,7 +12,7 @@ const moderation = new OpenAIModerationChain({
   throwError: false,
 });
 const taskDataP1 = await getTaskToken("moderation");
-const responseP1 = await getTaskInput<"input", string[]>(taskDataP1.token);
+const responseP1 = await getTaskInput<{ input: string[] }>(taskDataP1.token);
 
 const flagged = await Promise.all(
   responseP1.input.map(async (sentance) => {
@@ -36,15 +36,15 @@ const chat = new OpenAI({
 });
 
 const taskDataP2 = await getTaskToken("blogger");
-const responseP2 = await getTaskInput<"blog", string[]>(taskDataP2.token);
+const responseP2 = await getTaskInput<{ blog: string[] }>(taskDataP2.token);
 
-const t = `As a culinary blogger, please write a post in Polish. Each element of the provided array ${JSON.stringify(
+const content = `As a culinary blogger, please write a post in Polish. Each element of the provided array ${JSON.stringify(
   responseP2.blog
 )} should be a separate paragraph in the post that describes element with unique title. Return the result in JSON in given format {content: {title, paragraph}[]}`;
 
 try {
   const completion = await chat.chat.completions.create({
-    messages: [{ role: "user", content: t }],
+    messages: [{ role: "user", content: content }],
     model: "gpt-3.5-turbo",
   });
 
