@@ -18,12 +18,12 @@ const guessWhoSchema = {
         description:
           "Write briefly and ultra-concise the name and surname person described in text. If you don't know say \"I don't know.\"",
       },
-      answer: {
+      confident: {
         type: "boolean",
         description: "you know who it is = true",
       },
     },
-    required: ["name", "answer"],
+    required: ["name", "confident"],
   },
 };
 
@@ -58,8 +58,7 @@ while (!hasGuessed) {
   ]);
   const action = parseFunctionCall(conversation);
   if (action?.name && tools[action.name]) {
-    console.log(action);
-    if (action.args.answer) {
+    if (action.args.confident) {
       const submitResponse = await submitTaskAnswer(
         taskData.token,
         action.args.name
