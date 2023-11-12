@@ -3,3 +3,5 @@ dist/*
 node_modules/
 audio.mp3
 qdrant_storage
+people.json
+archiwum.json
