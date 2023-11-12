@@ -2,8 +2,6 @@ import * as dotenv from "dotenv";
 
 import { getTaskInput, getTaskToken, submitTaskAnswer } from "../api";
 
-import OpenAI from "openai";
-
 dotenv.config();
 
 const taskData = await getTaskToken("rodo");
