@@ -58,7 +58,7 @@ const getCurrentCurrenctExchangeRate = async (currency: string) => {
 };
 
 const chat = new ChatOpenAI({
-  modelName: "gpt-3.5-turbo",
+  modelName: "gpt-4",
 }).bind({
   functions: [getExchangeRateSchema, getPopulationSchema],
 });
