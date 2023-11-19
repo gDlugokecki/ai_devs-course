@@ -42,9 +42,9 @@ const act = async (query: string) => {
   if (action) {
     console.log(`action: ${action.name}`);
     response = await tools[action.name](action.args.tasks);
-    response = await rephrase(response, query);
+    response = (await rephrase(response, query)) as string;
   } else {
-    response = conversation.content;
+    response = conversation.content as string;
   }
   console.log(`AI: ${response}\n`);
   return response;

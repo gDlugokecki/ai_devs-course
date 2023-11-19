@@ -21,7 +21,7 @@ const { content } = await chat.call([
   new HumanMessage(`${task.question}`),
 ]);
 
-const entity = JSON.parse(content);
+const entity = JSON.parse(content as string);
 
 const personInfo = people.find(
   (item) => item.imie === entity.imie && item.nazwisko === entity.nazwisko
